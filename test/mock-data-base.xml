@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MeterReadingDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance">
+  <Header>
+    <IEE_System Id="OpenWay" />
+    <Creation_Datetime Datetime="2020-10-29T20:57:46" />
+    <Timezone Id="UTC" />
+    <Path FilePath="C:\ExportEndpointData\CRF_register_WATER_METERS_2020_10_30_8386200_1.xml" />
+    <Export_Template Id="DefaultReadingXmlExport" />
+    <CorrelationID Id="8386200" />
+  </Header>
+  <ImportExportParameters CreateResubmitFile="false" CreateReadingGroupForRegisterReads="false">
+    <DataFormat ReadingTimestampType="Utc" DSTTransitionType="ITRON_Compliant" />
+  </ImportExportParameters>
+  <Channels>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206576:LiterVolume" />
+      <Readings>
+        <Reading Value="796445" ReadingTime="2020-10-29T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="796494" ReadingTime="2020-10-29T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="796516" ReadingTime="2020-10-29T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="796543" ReadingTime="2020-10-29T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="796740" ReadingTime="2020-10-29T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="796982" ReadingTime="2020-10-29T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="797083" ReadingTime="2020-10-29T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="797097" ReadingTime="2020-10-29T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206581:LiterVolume" />
+      <Readings>
+        <Reading Value="442262" ReadingTime="2020-10-29T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442267" ReadingTime="2020-10-29T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442295" ReadingTime="2020-10-29T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442300" ReadingTime="2020-10-29T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442346" ReadingTime="2020-10-29T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442357" ReadingTime="2020-10-29T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442369" ReadingTime="2020-10-29T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442373" ReadingTime="2020-10-29T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206581:LiterVolume" />
+      <Readings>
+        <Reading Value="442262" ReadingTime="2020-10-29T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442267" ReadingTime="2020-10-29T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442295" ReadingTime="2020-10-29T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442300" ReadingTime="2020-10-29T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442346" ReadingTime="2020-10-29T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442357" ReadingTime="2020-10-29T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442369" ReadingTime="2020-10-29T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="442373" ReadingTime="2020-10-29T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206579:LiterVolume" />
+      <Readings>
+        <Reading Value="317194" ReadingTime="2020-10-29T12:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="317194" ReadingTime="2020-10-29T13:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="317194" ReadingTime="2020-10-29T14:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="317194" ReadingTime="2020-10-29T15:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="317194" ReadingTime="2020-10-29T16:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="317194" ReadingTime="2020-10-29T17:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="317219" ReadingTime="2020-10-29T18:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="317227" ReadingTime="2020-10-29T19:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206588:LiterVolume" />
+      <Readings>
+        <Reading Value="828467" ReadingTime="2020-10-29T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="828538" ReadingTime="2020-10-29T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="828613" ReadingTime="2020-10-29T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="828627" ReadingTime="2020-10-29T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="828639" ReadingTime="2020-10-29T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="828652" ReadingTime="2020-10-29T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="828664" ReadingTime="2020-10-29T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="828694" ReadingTime="2020-10-29T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120211718:LiterVolume" />
+      <Readings>
+        <Reading Value="225069" ReadingTime="2020-10-29T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="225071" ReadingTime="2020-10-29T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="225157" ReadingTime="2020-10-29T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="225160" ReadingTime="2020-10-29T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="225174" ReadingTime="2020-10-29T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="225245" ReadingTime="2020-10-29T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="225245" ReadingTime="2020-10-29T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="225245" ReadingTime="2020-10-29T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120211760:LiterVolume" />
+      <Readings>
+        <Reading Value="418987" ReadingTime="2020-10-29T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="419015" ReadingTime="2020-10-29T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="419029" ReadingTime="2020-10-29T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="419081" ReadingTime="2020-10-29T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="419111" ReadingTime="2020-10-29T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="419147" ReadingTime="2020-10-29T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="419153" ReadingTime="2020-10-29T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="419162" ReadingTime="2020-10-29T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+  </Channels>
+</MeterReadingDocument>

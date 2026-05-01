@@ -1,0 +1,4 @@
+# Ignore the contents
+app/data/failed/*
+# Keep folder
+!app/data/failed/.gitignore

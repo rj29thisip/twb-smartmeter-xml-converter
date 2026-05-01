@@ -1,0 +1,4 @@
+# Ignore the contents
+app/data/incoming/*
+# Keep folder
+!app/data/incoming/.gitignore

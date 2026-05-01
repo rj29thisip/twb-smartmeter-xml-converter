@@ -1,0 +1,4 @@
+# Ignore the contents
+app/logs/*
+# Keep folder
+!app/logs/.gitignore

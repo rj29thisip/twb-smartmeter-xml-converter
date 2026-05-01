@@ -1,0 +1,8 @@
+# virtual environments
+.venv/
+
+# python runtime
+__pycache__/
+
+# log files
+*.log
