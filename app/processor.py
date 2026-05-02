@@ -11,20 +11,55 @@ from utils import normalize, setup_logger
 logger = setup_logger("processor")
 
 MAPPING_FILE = "mapping.xlsx"
+_mapping_cache = None
+
+# ---------------------------
+# MAPPING CACHE
+# ---------------------------
+def get_mapping():
+    global _mapping_cache
+
+    if _mapping_cache is None:
+        logger.info("[MAPPING] Loading mapping file...")
+        _mapping_cache = pd.read_excel(MAPPING_FILE, engine="openpyxl")
+        _mapping_cache.columns = [c.strip().upper() for c in _mapping_cache.columns]
+        _mapping_cache["key"] = _mapping_cache["ENDPOINT ID"].apply(normalize)
+
+    return _mapping_cache
 
 
 # ---------------------------
 # CONFIG
 # ---------------------------
 def get_config():
-    return {
-        "db": os.getenv("DB_NAME", "{db_name}"),    # <-- change to database name
-        "user": os.getenv("DB_USER", "{db_user}}"), # <-- change to database username
-        "password": os.getenv("DB_PASS", "{db_password}"), # <-- change to database password
-        "host": os.getenv("DB_HOST", "localhost"),  # <-- change to database ip
-        "port": os.getenv("DB_PORT", "3306"),   # <-- change to database port (if using other than default port)
-        "table": os.getenv("DB_TABLE", "{db_table}"),   # <-- change to database table name
+    cfg = {
+        "db": os.getenv("DB_NAME", "twb_billing"),
+        "user": os.getenv("DB_USER", "root"),
+        "password": os.getenv("DB_PASS", "12345678"),
+        "host": os.getenv("DB_HOST", "localhost"),
+        "port": os.getenv("DB_PORT", "3306"),
+        "table": os.getenv("DB_TABLE", "meter_readings_xml"),
     }
+
+    # Validate for missing config
+
+    missing = []
+
+    for key, value in cfg.items():
+        if value is None or str(value).strip() == "":
+            missing.append(key)
+
+    if missing:
+        logger.error(f"[CONFIG] Missing required config values: {missing}")
+        raise ValueError(f"Missing config: {missing}")
+
+    # Logging
+    safe_cfg = cfg.copy()
+    safe_cfg["password"] = "****"
+
+    logger.info(f"[CONFIG] Loaded config: {safe_cfg}")
+
+    return cfg
 
 
 def get_engine():
@@ -41,7 +76,7 @@ def get_engine():
 
 
 # ---------------------------
-# CLEAN DATAFRAME (CRITICAL FIX)
+# CLEAN DATAFRAME
 # ---------------------------
 def clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     # Convert NaN / NaT → None (MySQL-safe)
@@ -118,11 +153,9 @@ def process_file(xml_path):
         logger.info(f"Processing file: {filename}")
 
         # ---------------------------
-        # LOAD MAPPING
+        # LOAD MAPPING (CACHED)
         # ---------------------------
-        mapping_df = pd.read_excel(MAPPING_FILE, engine="openpyxl")
-        mapping_df.columns = [c.strip().upper() for c in mapping_df.columns]
-        mapping_df["key"] = mapping_df["ENDPOINT ID"].apply(normalize)
+        mapping_df = get_mapping()
 
         # ---------------------------
         # PARSE XML
@@ -130,8 +163,12 @@ def process_file(xml_path):
         tree = ET.parse(processing_path)
         root = tree.getroot()
 
-        creation_dt = root.find(".//Creation_Datetime").attrib.get("Datetime")
-        creation_dt = datetime.fromisoformat(creation_dt)
+        # Validate creation datetime
+        creation_el = root.find(".//Creation_Datetime")
+        if creation_el is None:
+            raise ValueError("Missing Creation_Datetime in XML")
+
+        creation_dt = datetime.fromisoformat(creation_el.attrib["Datetime"])
 
         rows = []
 
@@ -149,11 +186,42 @@ def process_file(xml_path):
             source = str(source).strip()
 
             for reading in channel.findall(".//Reading"):
+
+                # ---------------------------
+                # VALIDATE READING VALUE
+                # ---------------------------
+                raw_value = reading.attrib.get("Value")
+
+                if raw_value is None:
+                    logger.warning(f"[XML] Missing Value in {filename}, skipping")
+                    continue
+
+                try:
+                    reading_value = int(float(raw_value))
+                except Exception:
+                    logger.warning(f"[XML] Invalid Value '{raw_value}', skipping")
+                    continue
+
+                # ---------------------------
+                # VALIDATE READING TIME
+                # ---------------------------
+                raw_time = reading.attrib.get("ReadingTime")
+
+                if raw_time is None:
+                    logger.warning(f"[XML] Missing ReadingTime, skipping")
+                    continue
+
+                try:
+                    reading_time = datetime.fromisoformat(raw_time)
+                except Exception:
+                    logger.warning(f"[XML] Invalid ReadingTime '{raw_time}', skipping")
+                    continue
+
                 rows.append({
                     "endpoint_id": endpoint_id,
                     "source": source,
-                    "reading_value": int(reading.attrib.get("Value")),
-                    "reading_time": datetime.fromisoformat(reading.attrib.get("ReadingTime")),
+                    "reading_value": reading_value,
+                    "reading_time": reading_time,
                     "file_datetime": creation_dt,
                     "file_name": filename
                 })
@@ -162,7 +230,7 @@ def process_file(xml_path):
         logger.info(f"Extracted rows: {len(df)}")
 
         if df.empty:
-            raise ValueError("No data extracted from XML")
+            raise ValueError("No valid data extracted from XML")
 
         # ---------------------------
         # MERGE MAPPING
@@ -200,7 +268,7 @@ def process_file(xml_path):
         ]
 
         # ---------------------------
-        # INTERNAL DEDUP (batch safety)
+        # INTERNAL DEDUP
         # ---------------------------
         before = len(df)
 
@@ -211,10 +279,10 @@ def process_file(xml_path):
         after = len(df)
 
         if before != after:
-            logger.warning(f"[DEDUP] Removed {before - after} duplicates in batch")
+            logger.warning(f"[DEDUP] Removed {before - after} duplicates")
 
         # ---------------------------
-        # 🔥 CRITICAL CLEAN STEP (FIXS YOUR ERROR)
+        # CLEAN DATA
         # ---------------------------
         df = clean_dataframe(df)
 
@@ -226,10 +294,10 @@ def process_file(xml_path):
         inserted, skipped = insert_ignore(df, DB_TABLE, engine)
 
         logger.info(f"[DB] Inserted: {inserted}")
-        logger.warning(f"[DB] Duplicates skipped: {skipped}")
+        logger.warning(f"[DB] Skipped (duplicates): {skipped}")
 
         # ---------------------------
-        # VERIFY TOTAL
+        # VERIFY
         # ---------------------------
         with engine.connect() as conn:
             total = conn.execute(
