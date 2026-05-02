@@ -7,9 +7,14 @@ import time
 from sqlalchemy import create_engine, text
 
 from utils import normalize, setup_logger
+from dotenv import load_dotenv
 
+# ---------------------------
+# LOGGER, DB CONFIGS, MAPPING / CACHE
+# ---------------------------
+
+load_dotenv()
 logger = setup_logger("processor")
-
 MAPPING_FILE = "mapping.xlsx"
 _mapping_cache = None
 
@@ -27,18 +32,17 @@ def get_mapping():
 
     return _mapping_cache
 
-
 # ---------------------------
 # CONFIG
 # ---------------------------
 def get_config():
     cfg = {
-        "db": os.getenv("DB_NAME", "twb_billing"),
-        "user": os.getenv("DB_USER", "root"),
-        "password": os.getenv("DB_PASS", "12345678"),
-        "host": os.getenv("DB_HOST", "localhost"),
-        "port": os.getenv("DB_PORT", "3306"),
-        "table": os.getenv("DB_TABLE", "meter_readings_xml"),
+        "db": os.getenv("DB_NAME"),
+        "table": os.getenv("DB_TABLE"),
+        "user": os.getenv("DB_USER"),
+        "password": os.getenv("DB_PASS"),
+        "host": os.getenv("DB_HOST", "localhost"),  # use default value if not configured in .env
+        "port": os.getenv("DB_PORT", "3306")        # use default value if not configured in .env
     }
 
     # Validate for missing config
