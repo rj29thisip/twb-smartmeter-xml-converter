@@ -1,0 +1,766 @@
+<?xml version='1.0' encoding='utf-8'?>
+<MeterReadingDocument>
+  <Header>
+    <IEE_System Id="OpenWay" />
+    <Creation_Datetime Datetime="2026-05-01T13:55:55" />
+    <Timezone Id="UTC" />
+    <Path FilePath="C:\DummyData\generated.xml" />
+    <Export_Template Id="DefaultReadingXmlExport" />
+    <CorrelationID Id="3912623" />
+  </Header>
+  <ImportExportParameters CreateResubmitFile="false">
+    <DataFormat ReadingTimestampType="Utc" DSTTransitionType="ITRON_Compliant" />
+  </ImportExportParameters>
+  <Channels>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206576:LiterVolume" />
+      <Readings>
+        <Reading Value="799311" ReadingTime="2026-04-28T00:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799331" ReadingTime="2026-04-28T01:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799341" ReadingTime="2026-04-28T02:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799380" ReadingTime="2026-04-28T03:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799393" ReadingTime="2026-04-28T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799435" ReadingTime="2026-04-28T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799447" ReadingTime="2026-04-28T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799493" ReadingTime="2026-04-28T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799506" ReadingTime="2026-04-28T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799563" ReadingTime="2026-04-28T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799607" ReadingTime="2026-04-28T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799645" ReadingTime="2026-04-28T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799694" ReadingTime="2026-04-28T12:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799731" ReadingTime="2026-04-28T13:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799771" ReadingTime="2026-04-28T14:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799789" ReadingTime="2026-04-28T15:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799805" ReadingTime="2026-04-28T16:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799826" ReadingTime="2026-04-28T17:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799874" ReadingTime="2026-04-28T18:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799879" ReadingTime="2026-04-28T19:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799892" ReadingTime="2026-04-28T20:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799906" ReadingTime="2026-04-28T21:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799945" ReadingTime="2026-04-28T22:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="799974" ReadingTime="2026-04-28T23:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206581:LiterVolume" />
+      <Readings>
+        <Reading Value="445161" ReadingTime="2026-04-28T00:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445193" ReadingTime="2026-04-28T01:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445223" ReadingTime="2026-04-28T02:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445235" ReadingTime="2026-04-28T03:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445261" ReadingTime="2026-04-28T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445310" ReadingTime="2026-04-28T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445326" ReadingTime="2026-04-28T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445361" ReadingTime="2026-04-28T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445404" ReadingTime="2026-04-28T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445460" ReadingTime="2026-04-28T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445477" ReadingTime="2026-04-28T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445505" ReadingTime="2026-04-28T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445551" ReadingTime="2026-04-28T12:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445606" ReadingTime="2026-04-28T13:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445616" ReadingTime="2026-04-28T14:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445673" ReadingTime="2026-04-28T15:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445703" ReadingTime="2026-04-28T16:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445751" ReadingTime="2026-04-28T17:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445771" ReadingTime="2026-04-28T18:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445796" ReadingTime="2026-04-28T19:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445820" ReadingTime="2026-04-28T20:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445845" ReadingTime="2026-04-28T21:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445894" ReadingTime="2026-04-28T22:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="445951" ReadingTime="2026-04-28T23:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206579:LiterVolume" />
+      <Readings>
+        <Reading Value="319865" ReadingTime="2026-04-28T00:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="319913" ReadingTime="2026-04-28T01:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="319930" ReadingTime="2026-04-28T02:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="319947" ReadingTime="2026-04-28T03:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="319999" ReadingTime="2026-04-28T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320026" ReadingTime="2026-04-28T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320031" ReadingTime="2026-04-28T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320064" ReadingTime="2026-04-28T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320098" ReadingTime="2026-04-28T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320150" ReadingTime="2026-04-28T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320179" ReadingTime="2026-04-28T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320197" ReadingTime="2026-04-28T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320233" ReadingTime="2026-04-28T12:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320282" ReadingTime="2026-04-28T13:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320298" ReadingTime="2026-04-28T14:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320335" ReadingTime="2026-04-28T15:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320373" ReadingTime="2026-04-28T16:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320421" ReadingTime="2026-04-28T17:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320456" ReadingTime="2026-04-28T18:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320488" ReadingTime="2026-04-28T19:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320506" ReadingTime="2026-04-28T20:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320541" ReadingTime="2026-04-28T21:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320586" ReadingTime="2026-04-28T22:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="320630" ReadingTime="2026-04-28T23:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120206588:LiterVolume" />
+      <Readings>
+        <Reading Value="831275" ReadingTime="2026-04-28T00:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831334" ReadingTime="2026-04-28T01:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831366" ReadingTime="2026-04-28T02:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831383" ReadingTime="2026-04-28T03:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831413" ReadingTime="2026-04-28T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831459" ReadingTime="2026-04-28T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831512" ReadingTime="2026-04-28T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831542" ReadingTime="2026-04-28T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831552" ReadingTime="2026-04-28T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831597" ReadingTime="2026-04-28T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831632" ReadingTime="2026-04-28T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831645" ReadingTime="2026-04-28T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831685" ReadingTime="2026-04-28T12:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831710" ReadingTime="2026-04-28T13:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831749" ReadingTime="2026-04-28T14:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831765" ReadingTime="2026-04-28T15:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831783" ReadingTime="2026-04-28T16:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831825" ReadingTime="2026-04-28T17:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831856" ReadingTime="2026-04-28T18:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831898" ReadingTime="2026-04-28T19:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831941" ReadingTime="2026-04-28T20:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831962" ReadingTime="2026-04-28T21:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="831981" ReadingTime="2026-04-28T22:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="832026" ReadingTime="2026-04-28T23:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120211718:LiterVolume" />
+      <Readings>
+        <Reading Value="228180" ReadingTime="2026-04-28T00:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228209" ReadingTime="2026-04-28T01:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228259" ReadingTime="2026-04-28T02:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228313" ReadingTime="2026-04-28T03:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228352" ReadingTime="2026-04-28T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228410" ReadingTime="2026-04-28T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228462" ReadingTime="2026-04-28T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228482" ReadingTime="2026-04-28T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228532" ReadingTime="2026-04-28T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228538" ReadingTime="2026-04-28T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228587" ReadingTime="2026-04-28T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228612" ReadingTime="2026-04-28T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228648" ReadingTime="2026-04-28T12:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228679" ReadingTime="2026-04-28T13:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228717" ReadingTime="2026-04-28T14:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228743" ReadingTime="2026-04-28T15:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228770" ReadingTime="2026-04-28T16:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228807" ReadingTime="2026-04-28T17:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228814" ReadingTime="2026-04-28T18:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228839" ReadingTime="2026-04-28T19:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228864" ReadingTime="2026-04-28T20:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228871" ReadingTime="2026-04-28T21:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228928" ReadingTime="2026-04-28T22:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="228958" ReadingTime="2026-04-28T23:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+    <Channel IsRegister="true" MarketType="Water" IsReadingDecoded="false" ReadingsInPulse="false">
+      <ChannelID EndPointUOMID="2.16.840.1.114416.17.0120211760:LiterVolume" />
+      <Readings>
+        <Reading Value="422384" ReadingTime="2026-04-28T00:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422389" ReadingTime="2026-04-28T01:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422436" ReadingTime="2026-04-28T02:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422478" ReadingTime="2026-04-28T03:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422534" ReadingTime="2026-04-28T04:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422580" ReadingTime="2026-04-28T05:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422629" ReadingTime="2026-04-28T06:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422653" ReadingTime="2026-04-28T07:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422697" ReadingTime="2026-04-28T08:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422749" ReadingTime="2026-04-28T09:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422795" ReadingTime="2026-04-28T10:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422832" ReadingTime="2026-04-28T11:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422844" ReadingTime="2026-04-28T12:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422897" ReadingTime="2026-04-28T13:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422952" ReadingTime="2026-04-28T14:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="422973" ReadingTime="2026-04-28T15:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423031" ReadingTime="2026-04-28T16:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423064" ReadingTime="2026-04-28T17:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423102" ReadingTime="2026-04-28T18:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423141" ReadingTime="2026-04-28T19:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423194" ReadingTime="2026-04-28T20:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423242" ReadingTime="2026-04-28T21:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423248" ReadingTime="2026-04-28T22:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+        <Reading Value="423262" ReadingTime="2026-04-28T23:00:00">
+          <ReadingStatus>
+            <UnencodedStatus SourceValidation="NV" />
+          </ReadingStatus>
+        </Reading>
+      </Readings>
+    </Channel>
+  </Channels>
+</MeterReadingDocument>

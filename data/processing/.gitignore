@@ -1,0 +1,4 @@
+# Ignore the contents
+app/data/processing/*
+# Keep folder
+!app/data/processing/.gitignore
