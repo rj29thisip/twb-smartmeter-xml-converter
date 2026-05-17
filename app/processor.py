@@ -10,25 +10,40 @@ from utils import normalize, setup_logger
 from dotenv import load_dotenv
 
 # ---------------------------
-# LOGGER, DB CONFIGS, MAPPING / CACHE
+# INIT
 # ---------------------------
-
 load_dotenv()
 logger = setup_logger("processor")
-MAPPING_FILE = "mapping.xlsx"
+
+# ---------------------------
+# MAPPING CACHE (DB)
+# ---------------------------
 _mapping_cache = None
+_mapping_last_load = 0
 
-# ---------------------------
-# MAPPING CACHE
-# ---------------------------
-def get_mapping():
-    global _mapping_cache
+def get_mapping_from_db(engine):
+    query = """
+    SELECT 
+        m.endpoint_id,
+        m.id AS meter_id
+    FROM meters m
+    WHERE m.status = 'active'
+    """
 
-    if _mapping_cache is None:
-        logger.info("[MAPPING] Loading mapping file...")
-        _mapping_cache = pd.read_excel(MAPPING_FILE, engine="openpyxl")
-        _mapping_cache.columns = [c.strip().upper() for c in _mapping_cache.columns]
-        _mapping_cache["key"] = _mapping_cache["ENDPOINT ID"].apply(normalize)
+    df = pd.read_sql(query, engine)
+    df["endpoint_id"] = df["endpoint_id"].apply(normalize)
+
+    return df
+
+def get_mapping(engine, ttl=300):
+    global _mapping_cache, _mapping_last_load
+
+    now = time.time()
+
+    if _mapping_cache is None or (now - _mapping_last_load > ttl):
+        logger.info("[MAPPING] Refreshing mapping from DB...")
+        _mapping_cache = get_mapping_from_db(engine)
+        _mapping_last_load = now
 
     return _mapping_cache
 
@@ -41,11 +56,9 @@ def get_config():
         "table": os.getenv("DB_TABLE"),
         "user": os.getenv("DB_USER"),
         "password": os.getenv("DB_PASS"),
-        "host": os.getenv("DB_HOST", "localhost"),  # use default value if not configured in .env
-        "port": os.getenv("DB_PORT", "3306")        # use default value if not configured in .env
+        "host": os.getenv("DB_HOST", "localhost"),
+        "port": os.getenv("DB_PORT", "3306")
     }
-
-    # Validate for missing config
 
     missing = []
 
@@ -57,7 +70,6 @@ def get_config():
         logger.error(f"[CONFIG] Missing required config values: {missing}")
         raise ValueError(f"Missing config: {missing}")
 
-    # Logging
     safe_cfg = cfg.copy()
     safe_cfg["password"] = "****"
 
@@ -68,60 +80,47 @@ def get_config():
 
 def get_engine():
     cfg = get_config()
+
     uri = f"mysql+pymysql://{cfg['user']}:{cfg['password']}@{cfg['host']}:{cfg['port']}/{cfg['db']}"
 
     logger.info(f"[DB] Connecting to {cfg['db']}")
 
-    return create_engine(
-        uri,
-        pool_pre_ping=True,
-        pool_recycle=60
-    )
-
+    return create_engine(uri, pool_pre_ping=True, pool_recycle=60)
 
 # ---------------------------
 # CLEAN DATAFRAME
 # ---------------------------
 def clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
-    # Convert NaN / NaT → None (MySQL-safe)
     df = df.where(pd.notnull(df), None)
 
-    # Convert pandas Timestamp → Python datetime
-    if "reading_time" in df:
-        df["reading_time"] = pd.to_datetime(df["reading_time"]).dt.to_pydatetime()
+    # Normalize datetime precision (important for UNIQUE keys)
+    if "capture_time" in df:
+        df["capture_time"] = pd.to_datetime(df["capture_time"]).dt.floor("s")
 
-    if "file_datetime" in df:
-        df["file_datetime"] = pd.to_datetime(df["file_datetime"]).dt.to_pydatetime()
+    if "received_time" in df:
+        df["received_time"] = pd.to_datetime(df["received_time"]).dt.floor("s")
 
-    # Force string-safe fields (avoid NaN / float injection)
-    for col in [
-        "endpoint_id",
-        "source",
-        "meter_id",
-        "customer_name",
-        "account",
-        "block_no",
-        "file_name"
-    ]:
+    # Ensure string-safe fields
+    for col in ["register_type", "source"]:
         if col in df:
             df[col] = df[col].fillna("").astype(str)
 
     return df
 
-
 # ---------------------------
-# INSERT IGNORE (SAFE DUPLICATES)
+# UPSERT (SAFE INSERT)
 # ---------------------------
-def insert_ignore(df, table_name, engine):
+def insert_upsert(df, table_name, engine):
     if df.empty:
         return 0, 0
 
     cols = list(df.columns)
-    col_str = ", ".join(cols)
+
+    col_str = ", ".join([f"`{c}`" for c in cols])
     val_str = ", ".join([f":{c}" for c in cols])
 
     sql = text(f"""
-        INSERT IGNORE INTO {table_name} ({col_str})
+        INSERT IGNORE INTO `{table_name}` ({col_str})
         VALUES ({val_str})
     """)
 
@@ -129,13 +128,11 @@ def insert_ignore(df, table_name, engine):
 
     with engine.begin() as conn:
         result = conn.execute(sql, data)
-        inserted = result.rowcount
 
-    total = len(df)
-    skipped = total - inserted
+    inserted = result.rowcount
+    skipped = len(df) - inserted
 
     return inserted, skipped
-
 
 # ---------------------------
 # MAIN PROCESSOR
@@ -157,9 +154,10 @@ def process_file(xml_path):
         logger.info(f"Processing file: {filename}")
 
         # ---------------------------
-        # LOAD MAPPING (CACHED)
+        # ENGINE + MAPPING
         # ---------------------------
-        mapping_df = get_mapping()
+        engine = get_engine()
+        mapping_df = get_mapping(engine)
 
         # ---------------------------
         # PARSE XML
@@ -167,7 +165,6 @@ def process_file(xml_path):
         tree = ET.parse(processing_path)
         root = tree.getroot()
 
-        # Validate creation datetime
         creation_el = root.find(".//Creation_Datetime")
         if creation_el is None:
             raise ValueError("Missing Creation_Datetime in XML")
@@ -191,128 +188,122 @@ def process_file(xml_path):
 
             for reading in channel.findall(".//Reading"):
 
-                # ---------------------------
-                # VALIDATE READING VALUE
-                # ---------------------------
                 raw_value = reading.attrib.get("Value")
-
                 if raw_value is None:
-                    logger.warning(f"[XML] Missing Value in {filename}, skipping")
                     continue
 
                 try:
                     reading_value = int(float(raw_value))
-                except Exception:
-                    logger.warning(f"[XML] Invalid Value '{raw_value}', skipping")
+                except:
                     continue
 
-                # ---------------------------
-                # VALIDATE READING TIME
-                # ---------------------------
                 raw_time = reading.attrib.get("ReadingTime")
-
                 if raw_time is None:
-                    logger.warning(f"[XML] Missing ReadingTime, skipping")
                     continue
 
                 try:
                     reading_time = datetime.fromisoformat(raw_time)
-                except Exception:
-                    logger.warning(f"[XML] Invalid ReadingTime '{raw_time}', skipping")
+                except:
                     continue
 
                 rows.append({
                     "endpoint_id": endpoint_id,
-                    "source": source,
-                    "reading_value": reading_value,
-                    "reading_time": reading_time,
-                    "file_datetime": creation_dt,
-                    "file_name": filename
+                    "register_type": source.lower(),
+                    "source": "self_read",
+                    "value": reading_value,
+                    "capture_time": reading_time,
+                    "received_time": creation_dt
                 })
 
         df = pd.DataFrame(rows)
         logger.info(f"Extracted rows: {len(df)}")
 
         if df.empty:
-            raise ValueError("No valid data extracted from XML")
+            raise ValueError("No valid data extracted")
 
         # ---------------------------
-        # MERGE MAPPING
+        # MAP endpoint_id → meter_id
         # ---------------------------
-        df = df.merge(
-            mapping_df,
-            left_on="endpoint_id",
-            right_on="key",
-            how="left"
-        )
+        df = df.merge(mapping_df, on="endpoint_id", how="left")
 
-        df.rename(columns={
-            "METER ID": "meter_id",
-            "CUSTOMER NAME": "customer_name",
-            "ACCOUNTS": "account",
-            "BLOCK NO": "block_no"
-        }, inplace=True)
+        logger.info(f"[DEBUG] Mapping sample:\n{df[['endpoint_id','meter_id']].head(5)}")
+
+        missing = df[df["meter_id"].isna()]
+        if not missing.empty:
+            logger.warning(f"[MAPPING] Dropping unmapped rows: {len(missing)}")
+
+        df = df[df["meter_id"].notna()]
+
+        # Enforce INT FK
+        df["meter_id"] = df["meter_id"].astype(int)
+
+        logger.info("[DEBUG] meter_id types:")
+        logger.info(df["meter_id"].apply(type).value_counts())
 
         # ---------------------------
         # FINAL STRUCTURE
         # ---------------------------
-        df = df[
-            [
-                "endpoint_id",
-                "source",
-                "reading_value",
-                "reading_time",
-                "file_datetime",
-                "meter_id",
-                "customer_name",
-                "account",
-                "block_no",
-                "file_name"
-            ]
-        ]
+        now = datetime.now()
+
+        df = pd.DataFrame({
+            "meter_id": df["meter_id"],
+            "capture_time": df["capture_time"],
+            "received_time": df["received_time"],
+            "register_type": df["register_type"],
+            "value": df["value"],
+            "usage": 0,
+            "source": "self_read",
+            "is_anomaly": 0,
+            "anomaly_note": None,
+            "created_at": now,
+            "updated_at": now
+        })
 
         # ---------------------------
-        # INTERNAL DEDUP
+        # DEDUP
         # ---------------------------
         before = len(df)
 
+        duplicate_count = df.duplicated(
+            subset=["meter_id", "capture_time", "register_type"],
+            keep=False
+        ).sum()
+
+        if duplicate_count > 0:
+            logger.info(f"[DEDUP] Duplicate rows found: {duplicate_count}")
+
         df = df.drop_duplicates(
-            subset=["endpoint_id", "reading_time", "source"]
+            subset=["meter_id", "capture_time", "register_type"]
         )
 
         after = len(df)
 
         if before != after:
-            logger.warning(f"[DEDUP] Removed {before - after} duplicates")
+            logger.info(f"[DEDUP] Removed {before - after} duplicates")
 
         # ---------------------------
-        # CLEAN DATA
+        # CLEAN
         # ---------------------------
         df = clean_dataframe(df)
 
         # ---------------------------
-        # DB INSERT
+        # INSERT / UPSERT
         # ---------------------------
-        engine = get_engine()
+        inserted, skipped = insert_upsert(df, DB_TABLE, engine)
 
-        inserted, skipped = insert_ignore(df, DB_TABLE, engine)
-
-        logger.info(f"[DB] Inserted: {inserted}")
-        logger.warning(f"[DB] Skipped (duplicates): {skipped}")
+        logger.info(f"[DB] New rows inserted: {inserted}")
+        logger.info(f"[DB] Duplicate rows ignored: {skipped}")
 
         # ---------------------------
         # VERIFY
         # ---------------------------
         with engine.connect() as conn:
             total = conn.execute(
-                text(f"SELECT COUNT(*) FROM {DB_TABLE}")
+                text(f"SELECT COUNT(*) FROM `{DB_TABLE}`")
             ).scalar()
 
         logger.info(f"[DB] Total rows: {total}")
 
-        # ---------------------------
-        # MOVE FILE
-        # ---------------------------
         shutil.move(processing_path, processed_path)
         logger.info(f"Completed: {filename}")
 
@@ -322,9 +313,8 @@ def process_file(xml_path):
         if os.path.exists(processing_path):
             shutil.move(processing_path, failed_path)
 
-
 # ---------------------------
-# RETRY WRAPPER
+# RETRY
 # ---------------------------
 def process_with_retry(filepath, retries=3):
     for attempt in range(retries):
