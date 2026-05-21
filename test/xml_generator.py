@@ -6,11 +6,11 @@ import os
 # ---------------------------
 # CONFIG
 # ---------------------------
-START_DATE = datetime(2026, 4, 24, 0, 0, 0)     # <-- change to target "from" date
-END_DATE   = datetime(2026, 4, 30, 23, 0, 0)    # <-- change to target "to" date
+START_DATE = datetime(2026, 4, 1, 0, 0, 0)     # <-- change to target "from" date
+END_DATE   = datetime(2026, 5, 31, 23, 0, 0)    # <-- change to target "to" date
 INTERVAL_HOURS = 1
 
-OUTPUT_DIR = "./test-data/output_xml"
+OUTPUT_DIR = "./output_xml"
 
 ENDPOINTS = [
     "2.16.840.1.114416.17.0120206576:LiterVolume",
