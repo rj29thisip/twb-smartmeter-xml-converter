@@ -2,36 +2,61 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import random
 import os
+import csv
 
 # ---------------------------
 # CONFIG
 # ---------------------------
-START_DATE = datetime(2026, 4, 1, 0, 0, 0)     # <-- change to target "from" date
-END_DATE   = datetime(2026, 5, 31, 23, 0, 0)    # <-- change to target "to" date
+START_DATE = datetime(2026, 6, 1, 0, 0, 0)     # <-- change to target "from" date
+END_DATE   = datetime(2026, 7, 6, 23, 0, 0)    # <-- change to target "to" date
 INTERVAL_HOURS = 1
 
 OUTPUT_DIR = "./output_xml"
 
 ENDPOINTS = [
-    "2.16.840.1.114416.17.0120206576:LiterVolume",
-    "2.16.840.1.114416.17.0120206581:LiterVolume",
-    "2.16.840.1.114416.17.0120206579:LiterVolume",
-    "2.16.840.1.114416.17.0120206588:LiterVolume",
-    "2.16.840.1.114416.17.0120211718:LiterVolume",
-    "2.16.840.1.114416.17.0120211760:LiterVolume",
+    "2.16.840.1.114416.17.0120206579:LiterVolume",    # <-- update target meter endpoint(s) for target customer(s) meter
+    "2.16.840.1.114416.17.0120206581:LiterVolume",    # <-- update target meter endpoint(s) for target customer(s) meter
+    "2.16.840.1.114416.17.0120206588:LiterVolume"    # <-- update target meter endpoint(s) for target customer(s) meter
 ]
 
-BASE_VALUES = {
-    ENDPOINTS[0]: 796000,
-    ENDPOINTS[1]: 442000,
-    ENDPOINTS[2]: 317000,
-    ENDPOINTS[3]: 828000,
-    ENDPOINTS[4]: 225000,
-    ENDPOINTS[5]: 419000,
-}
+CSV_FILE = "./base_readings.csv"    # <-- update csv file for target meter endpoint(s) and starting reading(s) value
 
 INCREMENT_RANGE = (5, 60)
 
+# ---------------------------
+# LOAD BASE CSV
+# ---------------------------
+
+def load_base_readings(filename):
+    values = {}
+
+    if not os.path.exists(filename):
+        raise FileNotFoundError(
+            f"Base file '{filename}' not found!"
+        )
+
+    with open(filename, newline="", encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader:
+            endpoint = row["endpoint"].strip()
+            values[endpoint] = int(row["start_value"])
+    
+    missing = []
+
+    for endpoint in ENDPOINTS:
+        if endpoint not in values:
+            missing.append(endpoint)
+
+    if missing:
+        raise ValueError(
+            "Missing base readings for:\n"
+            "\n".join(missing)
+        )
+
+    return values
+
+BASE_VALUES = load_base_readings(CSV_FILE)
 
 # ---------------------------
 # GENERATE READINGS FOR A DAY
@@ -63,8 +88,7 @@ def build_daily_xml(day_start, day_end, base_values):
     # HEADER
     header = ET.SubElement(root, "Header")
     ET.SubElement(header, "IEE_System", Id="OpenWay")
-    ET.SubElement(header, "Creation_Datetime",
-                  Datetime=datetime.now().strftime("%Y-%m-%dT%H:%M:%S"))
+    ET.SubElement(header, "Creation_Datetime", Datetime=datetime.now().strftime("%Y-%m-%dT%H:%M:%S"))
     ET.SubElement(header, "Timezone", Id="UTC")
     ET.SubElement(header, "Path", FilePath="C:\\DummyData\\generated.xml")
     ET.SubElement(header, "Export_Template", Id="DefaultReadingXmlExport")
